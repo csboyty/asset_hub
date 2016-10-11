@@ -1,0 +1,39 @@
+<div class="col-md-2 menu-container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1 class="panel-title">菜单</h1>
+        </div>
+        <div class="panel-body">
+            <div class="btn-group-vertical">
+                <div class="btn-group">
+                    <a class="btn btn-default" href="tags/mgr">主题/材料管理</a>
+                </div>
+
+                {% if current_user.role !='user' %}
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        资料<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="artifacts/mgr">资料管理</a></li>
+                        <li><a href="artifacts/create">上传资料</a></li>
+                    </ul>
+                </div>
+
+                {% if current_user.role =='admin' %}
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        用户<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="users/mgr">用户管理</a></li>
+                        <li><a href="users/edit">新建用户</a></li>
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

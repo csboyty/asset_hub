@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'head.html' %}
+    <link href="static/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="static/css/src/main.css" rel="stylesheet" type="text/css">
+    <script src="static/js/lib/jquery-2.0.3.min.js"></script>
+    <script src="static/js/lib/bootstrap.min.js"></script>
+    <script src="static/js/src/config.js"></script>
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<div class="container-fluid">
+    <div class="row">
+
+        {% include 'menu.html' %}
+
+        <div class="col-md-10 opt-container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">欢迎</h1>
+                </div>
+                <div class="panel-body" id="opt-body">
+                    <h1 class="text-primary text-center">系统出错，请选择其他操作！</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

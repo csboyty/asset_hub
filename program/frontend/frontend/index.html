@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>产品设计库</title>
+    <link href="css/lib/toaster.css" rel="stylesheet" type="text/css">
+    <link href="css/src/main.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]><!-->
+    <link href="css/src/ie.css" rel="stylesheet" type="text/css">
+    <!--<![endif]-->
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-animate.min.js"></script>
+    <script src="js/lib/angular-resource.min.js"></script>
+    <script src="js/lib/toaster.js"></script>
+    <script src="js/src/controllers.js"></script>
+    <script src="js/src/models.js"></script>
+    <script src="js/src/services.js"></script>
+    <script src="js/src/directives.js"></script>
+    <script src="js/src/app.js"></script>
+</head>
+<body ng-controller="super">
+<toaster-container toaster-options="{'position-class': 'toast-bottom-right'}"></toaster-container>
+    <div class="container" ng-show="mainVars.showContainer" set-scroll-top>
+        <div class="header">
+            <h1 class="logo"><a href="#">产品设计库</a></h1>
+            <div class="searchContainer">
+                <input type="text" class="searchInput" ng-keydown="searchInputKeyDown($event)"
+                       ng-model="mainVars.searchContent" placeholder="请输入标题">
+            </div>
+            <div class="tagsContainer">
+                <div class="materialContainer">
+                    <h4 class="hasIconLabel materialIcon c243f7c">按材料分</h4>
+                    <ul class="searchList">
+                        <li ng-repeat="m in mainVars.materials">
+                            <a href="" ng-class="{active:m.active==true}" ng-click="searchMaterial(m.name)">{{m.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="categoryContainer">
+                    <h4 class="hasIconLabel themeIcon c243f7c">按主题分</h4>
+                    <ul class="searchList">
+                        <li ng-repeat="c in mainVars.categories">
+                            <a href="" ng-class="{active:c.active==true}" ng-click="searchCategory(c.name)">{{c.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div ng-include="mainVars.contentTemplate" class="main">
+
+        </div>
+
+
+        <div class="footer">
+            <p class="description">产品库说明：
+                该产品库是在与国际设计和技术资源开展文化内容联合研究过程中，
+                在进行地域文化溯源、采集、创意设计后形成的。产品库围绕
+                岳麓书院文化、先秦与两汉楚文化、红色文化、农耕文化与稻作文化、
+                大湘西多民族非物质文化以及湖湘特色产业集群非物质文化与手工艺等
+                七大文化主题，从景点、人物、器物、历史事件与传说、核心价值进行研究，
+                输出以上七大主题产品
+            </p>
+        </div>
+    </div>
+
+    <!-----------blackout----------->
+    <div class="blackout" ng-show="rootFlags.showBlackOut"></div>
+
+    <div class="popWindow" ng-show="mainVars.showPopWindow">
+        <span class="close" ng-click="hidePopWindow()">关闭</span>
+        <div class="content" ng-include="mainVars.popWindowTemplate"></div>
+    </div>
+
+    <div class="loading animation_loading" ng-show="rootFlags.showLoading">
+        <span class="loading_spinner">Loading...</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<ul class="postList" ng-controller="postList" window-scroll watch-height>
+    <li ng-repeat="p in posts">
+        <a href="" ng-click="showSinglePost(p.id)">
+            <div class="front">
+                <img ng-src="{{p.preview_image}}">
+            </div>
+            <div class="back">
+                <h3 class="title textEllipsis">{{p.name}}</h3>
+                <p class="author c243f7c">{{p.author_txt}}</p>
+            </div>
+        </a>
+    </li>
+</ul>

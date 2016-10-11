@@ -1,0 +1,6 @@
+.postList li a:hover .front{
+    z-index: 0;
+}
+.postList li a:hover .back{
+
+}

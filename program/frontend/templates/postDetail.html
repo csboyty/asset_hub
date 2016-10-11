@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" href="static/css/src/main.css">
+    <script type="text/javascript" src="static/js/lib/jquery-2.0.3.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#preview").attr("src",$("#smallImages img").eq(0).attr("src"));
+            $("#smallImages img").click(function(){
+                $("#preview").attr("src",$(this).attr("src"));
+                return false;
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="singlePost">
+    <div class="left">
+        <ul class="smallImages" id="smallImages">
+            {% for a in artifact.assets %}
+            <li>
+                <a href="">
+                    <img src="{{a.media_file}}">
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <p>标题：{{artifact.name}}</p>
+        <p>作者：{{artifact.author_txt}}</p>
+        <p>尺寸：{{artifact.size_txt}}</p>
+        <label>设计说明</label>
+        <p>{{artifact.illustration}}</p>
+        <a class="download" href="{{artifact.attachment_file}}" target="_self">附件下载</a>
+        <br>
+        <br>
+        <a class="toHome" style="color:red" href="http://121.40.16.252/asset_hub_web/">返回网站首页</a>
+    </div>
+    <div class="right">
+        <img id="preview" src="">
+
+        <br>
+        <label>设计分析</label>
+        <p>{{artifact.analysis}}</p>
+    </div>
+</div>
+</body>
+</html>

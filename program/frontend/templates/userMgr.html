@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'head.html' %}
+    <link type="text/css" rel="stylesheet" href="static/css/lib/jquery.toastmessage.css">
+    <link type="text/css" rel="stylesheet" href="static/css/lib/jquery.dataTables.css">
+    <link href="static/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="static/css/src/main.css">
+    <script type="text/javascript" src="static/js/lib/jquery-2.0.3.min.js"></script>
+    <script src="static/js/lib/bootstrap.min.js"></script>
+    <script src="static/js/lib/jquery.form.js"></script>
+    <script src="static/js/lib/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="static/js/lib/jquery.toastmessage.js"></script>
+    <script type="text/javascript" src="static/js/lib/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="static/js/src/config.js"></script>
+    <script type="text/javascript" src="static/js/src/Functions.js"></script>
+    <script type="text/javascript" src="static/js/src/userMgr.js"></script>
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<div class="container-fluid">
+    <div class="row">
+
+        {% include 'menu.html' %}
+
+        <div class="col-md-10 opt-container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">用户管理</h1>
+                </div>
+                <div class="panel-body" id="opt-body">
+                    <div class="input-group tableSearchContainer col-md-6">
+                        <input type="text" id="fullname" class="form-control" placeholder="姓名">
+                        <span class="input-group-btn">
+                            <button id="searchBtn" class="btn btn-default" type="button">搜索</button>
+                        </span>
+                    </div>
+                    <a class="btn btn-success" href="users/edit">新建用户</a>
+                    <table id="myTable" class="dataTable">
+                        <thead>
+                        <tr>
+                            <th>邮箱</th>
+                            <th>姓名</th>
+                            <th>角色</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--<tr>
+                            <td>dddddddd</td>
+                            <td>dddddddd</td>
+                            <td>管理员</td>
+                            <td><a href="#" class="check">修改密码</a>&nbsp;<a href="#" class="check">删除</a></td>
+                        </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'loading.html' %}
+
+<div class="popWindow hidden" id="showDetailWindow">
+    <span class="close">X</span>
+    <h1 class="title">修改密码</h1>
+    <div class="content">
+        <form class="form-horizontal" id="myForm" action="users/:userId/reset_password" method="post">
+            <div class="form-group">
+                <label for="password" class="control-label col-md-2">密码*</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-control" name="password" id="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordConfirm" class="control-label col-md-2">确认密码*</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-success">确定</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

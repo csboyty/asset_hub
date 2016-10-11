@@ -1,0 +1,26 @@
+<div class="singlePost" ng-controller="postDetail">
+    <div class="left">
+        <ul class="smallImages">
+            <li ng-repeat="s in post.assets">
+                <a href="" ng-click="setPreviewImage($index)">
+                    <img ng-src="{{s.media_file}}">
+                </a>
+            </li>
+        </ul>
+        <h4 class="hasIconLabel nameIcon c243f7c">标题：</h4>
+        <p class="singleTxt">{{post.name}}</p>
+        <h4 class="hasIconLabel designerIcon c243f7c">作者：</h4>
+        <p class="singleTxt">{{post.author_txt}}</p>
+        <h4 class="hasIconLabel sizeIcon c243f7c">尺寸：</h4>
+        <p class="singleTxt">{{post.size_txt}}</p>
+        <h4 class="hasIconLabel functionIcon c243f7c">功能：</h4>
+        <p class="singleTxt">{{post.illustration}}</p>
+        <a class="download" ng-if="post.attachment_file" ng-href="{{post.attachment_file}}" target="_self">附件下载</a>
+    </div>
+    <div class="right">
+        <img ng-src="{{post.preview}}">
+        <br><br>
+        <h4 class="hasIconLabel analysisIcon c243f7c">设计分析：</h4>
+        <p class="singleTxt">{{post.analysis}}</p>
+    </div>
+</div>

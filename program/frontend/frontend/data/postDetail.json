@@ -1,0 +1,16 @@
+{
+    "success":true,
+    "post":{
+        "title":"xxxxxxxxxxxx",
+        "author":"xxxxxxxxx",
+        "attachment":"xxxx.zip",
+        "explain":"xxxxxx",
+        "analysis":"xxxxxxx",
+        "assets":[
+            {"media_filename":"xxxxx","media_file":"data/600x400/1.jpg"},
+            {"media_filename":"xxxxx","media_file":"data/600x400/2.jpg"},
+            {"media_filename":"xxxxx","media_file":"data/600x400/3.jpg"},
+            {"media_filename":"xxxxx","media_file":"data/600x400/4.jpg"}
+        ]
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'head.html' %}
+    <link type="text/css" rel="stylesheet" href="static/css/lib/jquery.toastmessage.css">
+    <link href="static/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="static/css/src/main.css" rel="stylesheet" type="text/css">
+    <script src="static/js/lib/jquery-2.0.3.min.js"></script>
+    <script src="static/js/lib/bootstrap.min.js"></script>
+    <script src="static/js/lib/jquery.form.js"></script>
+    <script src="static/js/lib/jquery.validate.min.js"></script>
+    <script src="static/js/lib/jquery.toastmessage.js"></script>
+    <script src="static/js/src/config.js"></script>
+    <script src="static/js/src/Functions.js"></script>
+    <script src="static/js/src/userUpdate.js"></script>
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<div class="container-fluid">
+    <div class="row">
+
+        {% include 'menu.html' %}
+
+        <div class="col-md-10 opt-container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">新建用户</h1>
+                </div>
+                <div class="panel-body" id="opt-body">
+                    <form class="form-horizontal" id="myForm" action="users/edit" method="post">
+                        {% if user.id %}
+                        <input type="hidden" name="id" value="{{user.id}}">
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="email" class="control-label col-md-2">邮箱*</label>
+                            <div class="col-md-10">
+                                {% if user.id %}
+                                <label>{{user.email}}</label>
+                                {% else %}
+                                <input type="text" class="form-control" value="{{user.email}}" name="email" id="email" placeholder="请输入邮箱...">
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fullname" class="control-label col-md-2">姓名*</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" value="{{user.fullname}}" name="fullname" id="fullname" placeholder="请输入姓名...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="role_name" class="control-label col-md-2">角色*</label>
+                            <div class="col-md-10">
+                                <select class="form-control" name="role_name" id="role_name">
+                                    {% for role in [{"name":"资料管理员","value":"manager"},{"name":"用户","value":"user"}] %}
+                                    {% if role== user.role_name %}
+                                    <option selected value="{{role.value}}">{{role.name}}</option>
+                                    {%  else %}
+                                    <option value="{{role.value}}">{{role.name}}</option>
+                                    {% endif %}
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div>
+                        {%if not user.id %}
+                        <div class="form-group">
+                            <label for="password" class="control-label col-md-2">密码*</label>
+                            <div class="col-md-10">
+                                <input type="password" class="form-control" name="password" id="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordConfirm" class="control-label col-md-2">确认密码*</label>
+                            <div class="col-md-10">
+                                <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm" >
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-success">确定</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'loading.html' %}
+
+</body>
+</html>
